@@ -1,0 +1,18 @@
+package routers
+
+import (
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context/param"
+)
+
+func init() {
+
+	beego.GlobalControllerRouter["agora_blog/controllers/api:AuthController"] = append(beego.GlobalControllerRouter["agora_blog/controllers/api:AuthController"],
+		beego.ControllerComments{
+			Method: "Get",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+}

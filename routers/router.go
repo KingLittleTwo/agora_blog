@@ -9,7 +9,7 @@ package routers
 
 import (
 	"agora_blog/controllers"
-
+	. "agora_blog/controllers/api"
 	"github.com/astaxie/beego"
 )
 
@@ -20,9 +20,14 @@ func init() {
 				&controllers.ObjectController{},
 			),
 		),
+		//beego.NSNamespace("/user",
+		//	beego.NSInclude(
+		//		&controllers.UserController{},
+		//	),
+		//),
 		beego.NSNamespace("/user",
 			beego.NSInclude(
-				&controllers.UserController{},
+				&AuthController{},
 			),
 		),
 	)
