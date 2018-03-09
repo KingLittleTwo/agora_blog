@@ -1,35 +1,33 @@
 package controllers
-
-import (
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
-	_ "github.com/go-sql-driver/mysql"
-	"fmt"
-	"github.com/astaxie/beego/config"
-)
-
-type BaseController struct {
-	beego.Controller
-}
-
-func init() {
-	iniconf, err := config.NewConfig("ini", "app.conf")
-	if err != nil {
-		fmt.Println("err: ", err)
-	}
-	// set default database
-	DbUser := iniconf.String("DbUser")
-	DbPass := iniconf.String("DbPass")
-	DbIP := iniconf.String("DbIP")
-	DbName := iniconf.String("DbName")
-	DbCharset := iniconf.String("DbCharset")
-
-
-	str := DbUser + ":" + DbPass + "@tcp(" + DbIP + ")" + "/" + DbName + "?charset" + DbCharset
-	fmt.Println(str)
-
-	orm.RegisterDataBase("default", "mysql", str, 30)
-	//orm.RegisterDataBase("default", "mysql", "root:root@tcp(127.0.0.1:3306)/codeagora?charset=utf8", 30)
-	// create table
-	orm.RunSyncdb("default", false, true)
-}
+//
+//import (
+//	"github.com/astaxie/beego"
+//	"github.com/astaxie/beego/orm"
+//	_ "github.com/go-sql-driver/mysql"
+//	//"fmt"
+//	"os"
+//)
+//
+//type BaseController struct {
+//	beego.Controller
+//}
+//
+//func init() {
+//	// set default database
+//	DbUser := beego.AppConfig.String("mysql::DbUser")
+//	DbPass := beego.AppConfig.String("mysql::DbPass")
+//	DbIP := beego.AppConfig.String("mysql::DbIP")
+//	DbName := beego.AppConfig.String("mysql::DbName")
+//	DbCharset := beego.AppConfig.String("mysql::DbCharset")
+//
+//	beego.Info(DbName)
+//	os.Stdout.WriteString(DbName)
+//
+//	conn := DbUser + ":" + DbPass + "@tcp(" + DbIP + ")" + "/" + DbName + "?charset" + DbCharset
+//
+//	orm.RegisterDriver("mysql", orm.DRMySQL)
+//
+//	orm.RegisterDataBase("default", "mysql", conn, 30)
+//
+//	orm.Debug = true
+//}
