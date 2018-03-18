@@ -39,7 +39,7 @@ export default {
       console.info(document.cookie)
     },
     // 获取cookie
-    getCookie: function (cname) {
+    getCookie2: function (cname) {
       if (document.cookie.length > 0) {
         var cstart = document.cookie.indexOf(cname + '=')
         if (cstart !== -1) {
@@ -52,6 +52,14 @@ export default {
         }
       }
       return ''
+    },
+    getCookie: function (name) {
+      var reg = new RegExp('(^| )' + name + ' = ([^;]*)(;|$)')
+      if (reg === document.cookie.match(reg)) {
+        return unescape(reg[2])
+      } else {
+        return null
+      }
     },
     // 清除cookie
     clearCookie: function () {

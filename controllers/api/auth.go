@@ -21,13 +21,7 @@ type AuthController struct {
 
 func (this *AuthController) Get() {
 
-	sess, _ := controllers.GlobalSessions.SessionStart(this.Ctx.ResponseWriter, this.Ctx.Request)
-	defer sess.SessionRelease(this.Ctx.ResponseWriter)
-
-	a := sess.Get("userinfo")
-	this.Data["json"] = a
-	this.ServeJSON()
-	return
+	this.TplName = "app/index.html"
 }
 
 // @Title SignUp
