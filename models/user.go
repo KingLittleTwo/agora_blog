@@ -13,11 +13,12 @@ type User struct {
 }
 
 type Profile struct {
-	Id      int    `orm:pk`
-	Sex     int8
-	Age     int16
-	Address string `orm:"size(256)"`
-	UserId  int
+	Id        int    `orm:pk`
+	Sex       int8
+	Age       int8
+	TelePhone int64
+	Address   string `orm:"size(256)"`
+	UserId    int
 }
 
 func init() {
@@ -25,7 +26,7 @@ func init() {
 
 }
 
-func Add(data map[string]string) string {
+func (this *User) AddUser(data map[string]string) string {
 	o := orm.NewOrm()
 	o.Using("default") // 默认使用 default，你可以指定为其他数据库
 
@@ -43,9 +44,24 @@ func Add(data map[string]string) string {
 	sex, _ := strconv.ParseInt(data["sex"], 10, 64)
 	profile.Sex = int8(sex)
 	age, _ := strconv.ParseInt(data["sex"], 10, 64)
-	profile.Age = int16(age)
+	profile.Age = int8(age)
+	profile.TelePhone, _ = strconv.ParseInt(data["telephone"], 10, 64)
 	profile.Address = data["address"]
+
 	profile.UserId = int(id)
+
 	_, err = o.Insert(profile)
 	return strconv.FormatInt(id, 10)
+}
+
+func (this *User) GetUserInfoByEmail(email string) (user User, err error) {
+	o := orm.NewOrm()
+	o.Using("default") // 默认使用 default，你可以指定为其他数据库
+
+	err = o.QueryTable(user).Filter("email", email).One(&user)
+
+	if err != nil {
+		return User{}, err
+	}
+	return user, err
 }

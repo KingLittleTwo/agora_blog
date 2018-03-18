@@ -1,0 +1,111 @@
+/* 布局 begin */
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.box-side {
+  width: 300px;
+}
+
+.el-container{
+  margin: 0 50px;
+}
+
+.box-margin {
+  margin: 0 10px;
+}
+
+.box-padding {
+  padding: 20px;
+}
+.box {
+  /* box-shadow: 1px 1px 2px 1px #ccc; */
+  border: 1px solid #e2e2e2;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.cl:after {
+  display:block;
+  clear:both;
+  content:"";
+  visibility:hidden;
+  height:0
+} 
+.cl {
+  zoom:1
+} 
+/* 布局 end */
+
+/* color begin */
+.bg-f0 {
+  background-color: #f0f0f0
+}
+
+.bg-white {
+  background-color: #ffffff
+}
+
+.bg-primary, .tag-primary {
+  background-color: #409EFF;
+}
+
+.bg-sucess, .tag-sucess {
+  background-color: #67C23A;
+}
+
+.bg-warning, .tag-warning {
+  background-color: #E6A23C;
+}
+
+.bg-danger, .tag-warning {
+  background-color: #F56C6C;
+}
+
+.bg-info, .tag-info {
+  background-color: #909399;
+}
+
+/* 字体 */
+.ft-primary {
+  color: #409EFF;
+}
+
+.ft-sucess {
+  color: #67C23A;
+}
+
+.ft-warning {
+  color: #E6A23C;
+}
+
+.ft-danger {
+  color: #F56C6C;
+}
+
+.ft-info {
+  color: #909399;
+}
+/* 字体 */
+/* color begin */
+
+/* tag begin */
+.tag {
+  font-size: 12px;
+  padding: 4px 6px;
+  display: inline-block;
+  height: 14px;
+  line-height: 14px;
+  color: #f0f0f0;
+  border-radius: 2px; 
+}
+/* tag end */
+
+/* 不知道这货为啥不能写reset里 */
+a {
+  color: #303133
+}

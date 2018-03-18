@@ -9,9 +9,9 @@ func init() {
 
 	beego.GlobalControllerRouter["agora_blog/controllers/api:AuthController"] = append(beego.GlobalControllerRouter["agora_blog/controllers/api:AuthController"],
 		beego.ControllerComments{
-			Method: "Get",
-			Router: `/`,
-			AllowHTTPMethods: []string{"get"},
+			Method: "SignIn",
+			Router: `/signin`,
+			AllowHTTPMethods: []string{"post"},
 			MethodParams: param.Make(),
 			Params: nil})
 

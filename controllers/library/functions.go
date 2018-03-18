@@ -8,7 +8,7 @@ import (
 )
 
 type Json struct {
-	Code int
+	Code string
 	Msg  string
 	Data string
 }
@@ -17,8 +17,8 @@ type Functions struct {
 	beego.Controller
 }
 
-func (this *Functions) ToJson(data Json) {
-	this.Data["json"] = data
+func (this *Functions) ToJson(j Json) {
+	this.Data["json"] = j
 	this.ServeJSON()
 	return
 }
