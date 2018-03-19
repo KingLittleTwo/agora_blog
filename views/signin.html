@@ -2,6 +2,9 @@
     var IsSignIn = {{.IsSignIn}}
 </script>
 <div class="container" style="width: 800px; margin-top: 200px">
+    <div class="alert alert-danger notice" role="alert">
+        <span></span>
+    </div>
     <form>
         <div class="form-group">
             <label for="email">Email</label>
@@ -53,6 +56,12 @@
     </form>
 </div>
 
+<style>
+    .notice {
+        display: none;
+    }
+</style>
+
 <script>
     $(function () {
         $("#submit").on("click", function () {
@@ -83,14 +92,13 @@
                 dataType: "json",
                 data: data,
                 success: function (responce) {
-                    if (responce.Data == "true") {
+                    if (responce.Msg == "success") {
                         window.location.href="http://localhost:8088"
                     } else {
-                        window.reload()
+                        $(".notice").show().find("span").text(responce.Msg)
                     }
                 }
             })
         })
     })
-
 </script>
